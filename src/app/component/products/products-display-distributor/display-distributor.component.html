@@ -1,0 +1,28 @@
+<div class="container">
+    <br>
+    <h1>Distributor Details</h1>
+    <br>
+    <div class="row">
+        <div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Distributor Id</th>
+                        <th scope="col">Distributor Name</th>
+                        <th scope="col">Distributor location</th>
+                        <th scope="col">Distributor Phone number</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let distributor of distributors; index as i">
+                        <td>{{distributor.distributorId}}</td>
+                        <td>{{distributor.name}}</td>
+                        <td>{{distributor.location}}</td>
+                        <td>{{distributor.phoneNumber}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>

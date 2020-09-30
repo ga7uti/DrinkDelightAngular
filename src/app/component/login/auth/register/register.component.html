@@ -1,0 +1,169 @@
+<div class="d-flex vw-100 vh-100 align-items-center justify-content-center">
+  <form
+    class="bg-white rounded p-5"
+    style="width: 500px"
+    (ngSubmit)="submit()"
+    [formGroup]="registerForm"
+  >
+    <h3 class="text-center mb-4 text-muted">Register Form</h3>
+
+    <div style="margin-top: 5px" *ngIf="response.status"
+         class="alert alert-danger">
+      {{response.message}}
+    </div>
+
+    <div class="form-group">
+      <input
+        type="text"
+        class="form-control"
+        id="full_name"
+        placeholder="Enter your full name"
+        name="full_name"
+        formControlName="fullName"
+      >
+      <div style="margin-top: 5px"
+           *ngIf="registerForm.get('fullName').invalid
+            && (registerForm.get('fullName').dirty || registerForm.get('fullName').touched)"
+           class="alert alert-danger">
+        <div
+          *ngIf="registerForm.get('fullName').errors.required"
+        >
+          Name is required
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <input
+        type="text"
+        class="form-control"
+        id="username"
+        placeholder="Enter your user name"
+        name="username"
+        formControlName="userName"
+      >
+      <div style="margin-top: 5px"
+           *ngIf="registerForm.get('userName').invalid
+            && (registerForm.get('userName').dirty || registerForm.get('userName').touched)"
+           class="alert alert-danger">
+        <div
+          *ngIf="registerForm.get('userName').errors.required"
+        >
+          Username is required
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        placeholder="Enter your email"
+        name="email"
+        formControlName="email"
+      >
+      <div style="margin-top: 5px"
+           *ngIf="registerForm.get('email').invalid
+            && (registerForm.get('email').dirty || registerForm.get('email').touched)"
+           class="alert alert-danger">
+        <div
+          *ngIf="registerForm.get('email').errors.required"
+        >
+          Email is required.
+        </div>
+        <div
+          *ngIf="registerForm.get('email').errors.email"
+        >
+          Invalid email.
+        </div>
+      </div>
+    </div>
+
+    <div formGroupName="passwordGroup">
+      <div class="form-group">
+        <input
+          type="password"
+          class="form-control"
+          placeholder="Enter your password"
+          id="password"
+          name="password"
+          formControlName="password"
+        >
+
+        <div style="margin-top: 5px"
+             *ngIf="registerForm.get('passwordGroup').get('password').invalid
+            && (registerForm.get('passwordGroup').get('password').dirty || registerForm.get('passwordGroup').get('password').touched)"
+             class="alert alert-danger">
+          <div
+            *ngIf="registerForm.get('passwordGroup').get('password').errors.required"
+          >
+            Password is required
+          </div>
+
+          <div
+            *ngIf="registerForm.get('passwordGroup').get('password').errors.minlength"
+          >
+            Password should be 8 characters long.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <input
+          type="password"
+          class="form-control"
+          placeholder="Enter your password again"
+          id="re-password"
+          name="re-password"
+          formControlName="re_password"
+        >
+        <div style="margin-top: 5px"
+             *ngIf="registerForm.get('passwordGroup').get('re_password').invalid
+            && (registerForm.get('passwordGroup').get('re_password').dirty || registerForm.get('passwordGroup').get('re_password').touched)"
+             class="alert alert-danger">
+          <div
+            *ngIf="registerForm.get('passwordGroup').get('re_password').errors.required"
+          >
+            Password is required
+          </div>
+
+          <div
+            *ngIf="registerForm.get('passwordGroup').get('re_password').errors.minlength"
+          >
+            Password should be 8 characters long.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <input
+        type="tel"
+        class="form-control"
+        id="phone_number"
+        placeholder="Enter your phone number "
+        name="phone_number"
+        formControlName="userPhone"
+      >
+      <div style="margin-top: 5px"
+           *ngIf="registerForm.get('userPhone').invalid
+            && (registerForm.get('userPhone').dirty || registerForm.get('userPhone').touched)"
+           class="alert alert-danger">
+        <div
+          *ngIf="registerForm.get('userPhone').errors.required"
+        >
+          Phone Number is required
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center">
+      <button type="submit"
+              class="btn  btn-primary"
+              [disabled]="!registerForm.valid"
+      >
+        Register
+      </button>
+    </div>
+  </form>
+</div>

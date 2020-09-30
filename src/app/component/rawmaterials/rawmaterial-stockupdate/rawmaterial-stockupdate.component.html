@@ -1,0 +1,85 @@
+<div id="order">
+    <div class="container">
+        <br>
+        <h1>Raw Material order</h1>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1
+                col-md-offset-2">
+                <form (ngSubmit)="onSubmit()" #f="ngForm">
+                    <table class="table">
+                        <tr>
+                            <td>
+                              <label for="stock-id">stock ID</label>
+                            </td>
+                            <td>
+                              <select id="stock-id" class="form-control" [(ngModel)]="stockId" name="sid" #sid="ngModel" required>
+                                <option *ngFor="let stockId of stockIds" [ngValue]="stockId">
+                                  {{stockId}}
+                                </option>
+                              </select>
+                              <span style="color:red;" class="help-block" *ngIf="!sid.valid && sid.touched">Please
+                                enter a valid ID !</span>
+                            </td>
+                          </tr>
+                        <tr>
+                            <td>
+                                <label for="quantity-unit">Quantity Unit</label>
+                            </td>
+                            <td>
+                                <input type="number" id="quantity-unit"
+                                    class="form-control" name="quantity-unit"
+                                    [(ngModel)]="QuantityUnit" #unit="ngModel"
+                                    required>
+                                <span style="color:red;" class="help-block" *ngIf="!unit.valid &&
+                                    unit.touched">Please
+                                    enter a valid quantity-unit !</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <label for="quality-check">Quality check</label>
+                            </td>
+                            <td>
+                                <input type="text" id="unit"
+                                    class="form-control"
+                                    name="quality-check"
+                                    [(ngModel)]="qualityCheck" #qc="ngModel"
+                                    required>
+                                <span style="color:red;" class="help-block" *ngIf="!qc.valid &&
+                                    qc.touched">Please
+                                    enter a quality check !</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="price-per-unit">Price per unit</label>
+                            </td>
+                            <td>
+
+                                <input type="number" id="price-per-unit"
+                                    class="form-control"
+                                    name="price-per-unit"
+                                    [(ngModel)]="pricePerUnit"
+                                    #price="ngModel" required>
+                                <span style="color:red;" class="help-block" *ngIf="!price.valid
+                                    && price.touched">Please
+                                    enter a valid Price !</span>
+                            </td>
+                        </tr>
+
+
+                    </table>
+                    <button [disabled]="!f.valid" class="btn btn-primary"
+                        type="submit">Order</button>
+                </form>
+            </div>
+        </div>
+        <div class="row" *ngIf="submitted">
+            <div class="col-xs-12">
+                <h3>update successful {{response}}</h3>
+            </div>
+            <br><br>
+        </div>
+    </div>
+</div>

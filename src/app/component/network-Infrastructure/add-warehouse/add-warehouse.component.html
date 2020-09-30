@@ -1,0 +1,32 @@
+<div id="order">
+  <div class="container">
+    <br>
+    <h1>Raw Material order</h1>
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+        <form (ngSubmit)="onSubmit()" #f="ngForm">
+          <table class="table">
+            <tr>
+              <td>
+                <label for="name">Warehouse Location</label>
+              </td>
+              <td>
+                <input type="text" id="location" class="form-control" name="location" [(ngModel)]="location"
+                  #loc="ngModel" required>
+                <span class="help-block" *ngIf="!loc.valid && loc.touched">Please
+                  enter a valid Unit !</span>
+              </td>
+            </tr>
+          </table>
+          <button [disabled]="!f.valid" class="btn btn-dark" type="submit">Add warehouse</button>
+        </form>
+      </div>
+    </div>
+    <div class="row" *ngIf="submitted">
+      <div class="col-xs-12">
+        <h3>Added sucessfully ! warehouse id is : {{warehouseId}}</h3>
+      </div>
+      <br><br>
+    </div>
+  </div>
+</div>

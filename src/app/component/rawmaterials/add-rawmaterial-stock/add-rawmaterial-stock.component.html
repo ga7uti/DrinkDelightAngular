@@ -1,0 +1,97 @@
+<div id="order">
+    <div class="container">
+        <br>
+        <h1>Add Rawmaterial Stock</h1>
+        <div class="row">
+          <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+            <form (ngSubmit)="onSubmit()" #f="ngForm">
+              <table class="table">
+                <tr>
+                  <td>
+                    <label for="product-name">Rawmaterial Name</label>
+                  </td>
+                  <td>
+                    <input type="text" id="product-name" class="form-control" name="product-name" [(ngModel)]="name" #pname="ngModel"
+                      required>
+                    <span style="color:red;" class="help-block" *ngIf="!pname.valid && pname.touched">Please
+                      enter a valid name !</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label for="warehouse-id">Warehouse ID</label>
+                  </td>
+                  <td>
+                    <select id="warehouse-id" class="form-control" [(ngModel)]="warehouse" name="wid" #wid="ngModel" required>
+                      <option *ngFor="let warehouse of warehouses" [ngValue]="warehouse">
+                        {{warehouse.warehouseId}}
+                      </option>
+                    </select>
+                    <span style="color:red;" class="help-block" *ngIf="!wid.valid && wid.touched">Please
+                      enter a valid ID !</span>
+                  </td>
+                </tr>
+                
+                <tr>
+                  <td>
+                    <label for="quantity-unit">Quantity Unit</label>
+                  </td>
+                  <td>
+                    <input type="number" id="unit" class="form-control" name="quantity-unit" [(ngModel)]="quantityUnit" #unit="ngModel"
+                      required>
+                    <span style="color:red;"class="help-block" *ngIf="!unit.valid && unit.touched">Please
+                      enter a valid Unit !</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label for="price-per-unit">Price per unit</label>
+                  </td>
+                  <td>
+                    <input type="number" id="price-per-unit" class="form-control" name="price-per-unit" [(ngModel)]="pricePerUnit"
+                      #price="ngModel" required>
+                    <span style="color:red;" class="help-block" *ngIf="!price.valid && price.touched">Please
+                      enter a valid Price !</span>
+      
+                  </td>
+                </tr>
+                <tr>
+                    <td>
+                      <label for="quality-check">Quality check</label>
+                    </td>
+                    <td>
+                      <input type="text" id="unit" class="form-control" name="quality-check" [(ngModel)]="qualityCheck" #qc="ngModel"
+                        required>
+                      <span style="color:red;" class="help-block" *ngIf="!qc.valid && qc.touched">Please
+                        enter a quality check !</span>
+                    </td>
+                  </tr>
+                <tr>
+                  <td><label for="mdate">Manufacturing date</label></td>
+                  <td>
+                    <input type="date" id="mdate" class="form-control" name="mdate" [(ngModel)]="manufacturingDate" #mdate="ngModel" required>
+                    <span style="color:red;" class="help-block" *ngIf="!mdate.valid && mdate.touched">Please
+                      enter a valid date !</span>
+                  </td>
+                </tr>
+                <tr>
+                    <td><label for="edate">Expiry date</label></td>
+                    <td>
+                      <input type="date" id="edate" class="form-control" name="edate" [(ngModel)]="expiryDate" #edate="ngModel" required>
+                      <span style="color:red;" class="help-block" *ngIf="!edate.valid && edate.touched">Please
+                        enter a valid date !</span>
+                    </td>
+                  </tr>
+              </table>
+              <button [disabled]="!f.valid" class="btn btn-primary" type="submit">Add Stock</button>
+            </form>
+          </div>
+        </div>
+        <div class="row" *ngIf="submitted">
+          <div class="col-xs-12">
+            <h3>Stock added order successfully  ! Your Stock  id is : {{stockId}}</h3>
+          </div>
+          <br><br>
+        </div>
+      </div>
+    </div>

@@ -1,0 +1,29 @@
+<div class="container">
+    <br>
+    <h1>Track Raw Material Order</h1>
+    <br>
+    <div class="row">
+        <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+            <form (ngSubmit)="onSubmit()" #f="ngForm">
+                <table class="table">
+                    <tr>
+                        <td><label for="oder-id">Order ID</label></td>
+                        <td>
+                            <input type="number" id="oder-id" class="form-control" name="oder-id" [(ngModel)]="orderId"
+                                #orderid="ngModel" required>
+                            <span style="color:red;" class="help-block" *ngIf="!orderid.valid && orderid.touched">Please
+                                enter a OrderId !</span>
+                        </td>
+                    </tr>
+                </table>
+                <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Display</button>
+            </form>
+        </div>
+    </div>
+    <div class="row" *ngIf="submitted">
+        <div class="col-xs-12">
+            <h3>{{trackResponse}}</h3>
+        </div>
+        <br><br>
+    </div>
+</div>
