@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { RawMaterialOrder } from "../../../models/RawMaterialOrder";
+import { RawMaterialOrder } from "../../../../models/RawMaterialOrder";
 import { RawmaterialService } from 'src/app/services/rawmaterial.service';
 import { Supplier } from 'src/app/models/Supplier';
 import { Warehouse } from 'src/app/models/Warehouse';

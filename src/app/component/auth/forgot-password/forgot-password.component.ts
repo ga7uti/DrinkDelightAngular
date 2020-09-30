@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService} from '../../_service/auth.service';
-import {ErrorResponse} from '../../_model/error-response';
+import {AuthService} from '../../../services/auth.service';
+import {ErrorResponse} from '../../../models/error-response';
 
 @Component({
   selector: 'app-forgot-password',

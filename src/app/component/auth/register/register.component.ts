@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {User} from '../../_model/user';
-import {AuthService} from '../../_service/auth.service';
+import {User} from '../../../models/user';
+import {AuthService} from '../../../services/auth.service';
 import {Router} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {ErrorResponse} from '../../_model/error-response';
+import {ErrorResponse} from '../../../models/error-response';
 
 @Component({
   selector: 'app-register',

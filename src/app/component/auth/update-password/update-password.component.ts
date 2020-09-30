@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService} from '../../_service/auth.service';
+import {AuthService} from '../../../services/auth.service';
 import {Router} from '@angular/router';
-import {ErrorResponse} from '../../_model/error-response';
+import {ErrorResponse} from '../../../models/error-response';
 
 @Component({
   selector: 'app-update-password',

@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
-import {LoginRequest} from '../_model/login-request';
+import {LoginRequest} from '../models/login-request';
 import {HttpClient} from '@angular/common/http';
-import {User} from '../_model/user';
+import {User} from '../models/user';
 import {Observable} from 'rxjs';
-import {environment} from '../../../../environments/environment';
+import {environment} from '../../environments/environment';
 import {JwtHelperService} from '@auth0/angular-jwt';
 
 @Injectable({

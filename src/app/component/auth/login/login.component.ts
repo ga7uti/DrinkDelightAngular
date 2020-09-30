@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {LoginRequest} from '../../_model/login-request';
-import {AuthService} from '../../_service/auth.service';
+import {LoginRequest} from '../../../models/login-request';
+import {AuthService} from '../../../services/auth.service';
 import {Router} from '@angular/router';
-import {ErrorResponse} from '../../_model/error-response';
-import {User} from '../../_model/user';
-import {Role} from '../../_model/role.enum';
+import {ErrorResponse} from '../../../models/error-response';
+import {User} from '../../../models/user';
+import {Role} from '../../../models/role.enum';
 
 @Component({
   selector: 'app-login',
