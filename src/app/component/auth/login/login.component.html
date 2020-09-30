@@ -1,6 +1,5 @@
 <div class="d-flex vw-100 vh-100 align-items-center justify-content-center">
-  <form class="bg-white rounded p-5" style="width: 500px" (ngSubmit)="submit()">
-    <h3 class="text-center mb-4 text-muted">Login</h3>
+  <form class="rounded p-5" style="width: 500px" (ngSubmit)="submit()">
     <div style="margin-top: 5px" *ngIf="response.status"
          class="alert alert-danger">
       {{response.message}}
@@ -16,12 +15,16 @@
           ngModel
           [(ngModel)]="loginRequest.username"
           #username="ngModel"
+          minlength="4"
           required
         >
         <div style="margin-top: 5px" *ngIf="username.invalid && (username.dirty || username.touched)"
              class="alert alert-danger">
           <div *ngIf="username.errors.required">
             Username is required
+          </div>
+          <div *ngIf="username.errors.minlength">
+            Username must be at least 4 characters long.
           </div>
         </div>
       </div>

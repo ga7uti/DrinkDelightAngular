@@ -1,11 +1,11 @@
 <div class="d-flex vw-100 vh-100 align-items-center justify-content-center">
   <form
-    class="bg-white rounded p-5"
+    class="rounded p-5"
     style="width: 500px"
     (ngSubmit)="submit()"
     [formGroup]="registerForm"
   >
-    <h3 class="text-center mb-4 text-muted">Register Form</h3>
+    <h3 class="text-center mb-4 text-muted"><b>Add new user</b></h3>
 
     <div style="margin-top: 5px" *ngIf="response.status"
          class="alert alert-danger">
