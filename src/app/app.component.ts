@@ -9,19 +9,9 @@ import { AuthService } from './services/auth.service';
 })
 export class AppComponent {
   title = 'dd';
-  isLogged:boolean;
-  constructor(private authService: AuthService,private router:Router){
-    this.isLogged=authService.isLoggedIn;
-  }
-  get isLoggedIn():boolean{
-    return false;
-  }
-  login(){
-    this.isLogged=this.authService.isLoggedIn;
+  constructor(public authService: AuthService,private router:Router){
   }
   logOut(){
     this.authService.logout();
-    this.authService.isLoggedIn=false;
-    this.isLogged=false;
   }
 }

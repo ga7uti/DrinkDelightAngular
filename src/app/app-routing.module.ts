@@ -52,7 +52,7 @@ const routes: Routes =[
       {path:'distributor-display',component:DisplayDistributorComponent, canActivate: [AuthGuard],data: { roles: [Role.User,]}} ,
       {path:'product-addStock',component:AddProductStockComponent, canActivate: [AuthGuard],data: { roles: [Role.Admin]}} ,
       {path:'product-updateStock',component:UpdateProductComponent, canActivate: [AuthGuard],data: { roles: [Role.Admin]}} ,
-      {path:'',redirectTo:'login',pathMatch:'full'},
+      {path:'',redirectTo:'home',pathMatch:'full'},
       {path:'**',component:PageNotFoundComponent},
 ];
 

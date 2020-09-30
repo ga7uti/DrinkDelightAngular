@@ -42,7 +42,8 @@ export class AuthService {
   }
 
   isAuthenticated(): boolean {
-    return !this.jwtHelper.isTokenExpired(this.getUser().token);
+    //return !this.jwtHelper.isTokenExpired(this.getUser().token);
+    return false;
   }
 
   saveUser(user){
@@ -51,5 +52,19 @@ export class AuthService {
 
   getUser(){
     return new User(JSON.parse(localStorage.getItem('currentUser')));
+  }
+
+  getRole() {
+    //return new User(JSON.parse(localStorage.getItem('currentUser'))).roles[0];
+    return 'ROLE_USER'
+  }
+
+  getUserId() {
+    //return new User(JSON.parse(localStorage.getItem('currentUser'))).userId;
+  }
+
+  getToken(){
+    console.log( new User(JSON.parse(localStorage.getItem('currentUser'))).token);
+    return new User(JSON.parse(localStorage.getItem('currentUser'))).token;
   }
 }
