@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Distributor } from 'src/app/models/Distributor';
 import { ProductOrder } from 'src/app/models/ProductOrder';
+import { Warehouse } from 'src/app/models/Warehouse';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({

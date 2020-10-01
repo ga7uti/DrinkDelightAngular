@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
-import { AppRoutingModule,} from './app-routing.module';
+import { AppRoutingModule, } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './component/home/home.component';
 import { RouterModule } from '@angular/router'
@@ -24,13 +24,13 @@ import { NetinfraService } from './services/netinfra.service';
 import { AddRawmaterialStockComponent } from './component/admin/rawmaterials/add-rawmaterial-stock/add-rawmaterial-stock.component';
 import { AddProductStockComponent } from './component/admin/products/add-product-stock/add-product-stock.component';
 import { ProductService } from './services/product.service';
-import {LoginComponent} from './component/auth/login/login.component';
-import {RegisterComponent} from './component/auth/register/register.component';
-import {UserComponent} from './component/user/user.component';
-import {AdminComponent} from './component/admin/admin.component';
-import {UpdatePasswordComponent} from './component/auth/update-password/update-password.component';
-import {ForgotPasswordComponent} from './component/auth/forgot-password/forgot-password.component';
-import {AuthGuard} from './helpers/auth.guard';
+import { LoginComponent } from './component/auth/login/login.component';
+import { RegisterComponent } from './component/auth/register/register.component';
+import { UserComponent } from './component/user/user.component';
+import { AdminComponent } from './component/admin/admin.component';
+import { UpdatePasswordComponent } from './component/auth/update-password/update-password.component';
+import { ForgotPasswordComponent } from './component/auth/forgot-password/forgot-password.component';
+import { AuthGuard } from './helpers/auth.guard';
 import { Role } from './models/role.enum';
 import { ProductsComponent } from './component/user/products/products.component';
 import { OrdersComponent } from './component/user/orders/orders.component';
@@ -73,7 +73,7 @@ import { PlaceOrdersComponent } from './component/user/place-orders/place-orders
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [RawmaterialService,NetinfraService,ProductService,AuthGuard],
+  providers: [RawmaterialService, NetinfraService, ProductService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
