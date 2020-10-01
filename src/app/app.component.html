@@ -1,34 +1,27 @@
-<!-- <span class="fa fa-spinner spinner" *ngIf="loading"></span> -->
-
 <nav class="navbar navbar-expand navbar-light bg-light">
 
     <a class="nav-link" [routerLink]="['/home']" routerLinkActive="active">
         <img src="assets/logo.jpg" alt="Logo" style="width:60px; margin-top:
             0%;">
     </a>
+
     <ul class="navbar-nav" *ngIf="authService.isAuthenticated() && authService.getRole()=='ROLE_ADMIN'">
         <li class="nav-item">
             <div class="dropdown">
                 <button class="dropbtn">&nbsp;&nbsp;&nbsp;Product
                     Management&nbsp;&nbsp;&nbsp;&nbsp;</button>
                 <div class="dropdown-content">
-                    <a class="nav-link" [routerLink]="['/product-order']"
-                        routerLinkActive="active">Place Product
+                    <a class="nav-link" [routerLink]="['/product-order']" routerLinkActive="active">Place Product
                         Order</a>
-                    <a class="nav-link" [routerLink]="['/rawmaterial-order']"
-                        routerLinkActive="active">Place Raw
+                    <a class="nav-link" [routerLink]="['/rawmaterial-order']" routerLinkActive="active">Place Raw
                         material order</a>
-                    <a class="nav-link" [routerLink]="['/product-track']"
-                        routerLinkActive="active">Track product
+                    <a class="nav-link" [routerLink]="['/product-track']" routerLinkActive="active">Track product
                         order</a>
-                    <a class="nav-link" [routerLink]="['/rawmaterial-track']"
-                        routerLinkActive="active">Track Raw
+                    <a class="nav-link" [routerLink]="['/rawmaterial-track']" routerLinkActive="active">Track Raw
                         material order</a>
-                    <a class="nav-link" [routerLink]="['/distributor-display']"
-                        routerLinkActive="active">Display
+                    <a class="nav-link" [routerLink]="['/distributor-display']" routerLinkActive="active">Display
                         distributor details</a>
-                    <a class="nav-link" [routerLink]="['/supplier-display']"
-                        routerLinkActive="active">Display Suppliers
+                    <a class="nav-link" [routerLink]="['/supplier-display']" routerLinkActive="active">Display Suppliers
                         details</a>
                 </div>
             </div>
@@ -38,30 +31,21 @@
                 <button class="dropbtn">&nbsp; &nbsp;&nbsp;Raw Material Management
                     &nbsp; &nbsp; &nbsp;</button>
                 <div class="dropdown-content">
-                    <a class="nav-link" [routerLink]="['product-addStock']"
-                        routerLinkActive="active">Add product
+                    <a class="nav-link" [routerLink]="['product-addStock']" routerLinkActive="active">Add product
                         stock</a>
-                    <a class="nav-link" [routerLink]="['/rawmaterial-addStock']"
-                        routerLinkActive="active">Add Raw
+                    <a class="nav-link" [routerLink]="['/rawmaterial-addStock']" routerLinkActive="active">Add Raw
                         material stock</a>
-                    <a class="nav-link" [routerLink]="['/product-updateStock']"
-                        routerLinkActive="active">Update product
+                    <a class="nav-link" [routerLink]="['/product-updateStock']" routerLinkActive="active">Update product
                         stock</a>
-                    <a class="nav-link"
-                        [routerLink]="['/rawmaterial-updateStock']"
-                        routerLinkActive="active">Update Raw
+                    <a class="nav-link" [routerLink]="['/rawmaterial-updateStock']" routerLinkActive="active">Update Raw
                         material stock</a>
-                    <a class="nav-link" [routerLink]="['/product-update']"
-                        routerLinkActive="active">Update Product
+                    <a class="nav-link" [routerLink]="['/product-update']" routerLinkActive="active">Update Product
                         Order</a>
-                    <a class="nav-link" [routerLink]="['/rawmaterial-update']"
-                        routerLinkActive="active">Update Raw
+                    <a class="nav-link" [routerLink]="['/rawmaterial-update']" routerLinkActive="active">Update Raw
                         material order</a>
-                    <a class="nav-link" [routerLink]="['/product-display']"
-                        routerLinkActive="active">Display Product
+                    <a class="nav-link" [routerLink]="['/product-display']" routerLinkActive="active">Display Product
                         Order</a>
-                    <a class="nav-link" [routerLink]="['/rawmaterial-display']"
-                        routerLinkActive="active">Display Raw
+                    <a class="nav-link" [routerLink]="['/rawmaterial-display']" routerLinkActive="active">Display Raw
                         material order</a>
                 </div>
             </div>
@@ -70,45 +54,36 @@
             <div class="dropdown">
                 <button class="dropbtn">Stock Managment</button>
                 <div class="dropdown-content">
-                    <a class="nav-link" [routerLink]="['/add-supplier']"
-                        routerLinkActive="active">Add Supplier</a>
-                    <a class="nav-link" [routerLink]="['/add-distributor']"
-                        routerLinkActive="active">Add
+                    <a class="nav-link" [routerLink]="['/add-supplier']" routerLinkActive="active">Add Supplier</a>
+                    <a class="nav-link" [routerLink]="['/add-distributor']" routerLinkActive="active">Add
                         distributor</a>
-                    <a class="nav-link" [routerLink]="['/add-warehouse']"
-                        routerLinkActive="active">Add warehouses</a>
+                    <a class="nav-link" [routerLink]="['/add-warehouse']" routerLinkActive="active">Add warehouses</a>
 
                 </div>
             </div>
         </li>
     </ul>
-    <ul class="navbar-nav ml-auto" *ngIf= "authService.isAuthenticated() && authService.getRole()=='ROLE_USER'">
-        <li class="nav-item" >
-            <a class="nav-link" [routerLink]="['/login']" (click)="login()">Log In</a>
+    <ul class="navbar-nav" *ngIf="authService.isAuthenticated() && authService.getRole()=='ROLE_USER'">
+        <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/products']" >Products</a>
         </li>
-        <li class="nav-item" >
+        <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/orders']">Orders</a>
+        </li>
+    </ul>
+    <ul class="navbar-nav ml-auto" *ngIf="authService.isAuthenticated()">
+        <li class="nav-item">
             <a class="nav-link" [routerLink]="['/home']" (click)="logOut()">Log Out</a>
         </li>
     </ul>
-    <ul class="navbar-nav ml-auto"
-    *ngIf="!authService.isAuthenticated()"
->
-  <li
-    class="nav-item mx-0 mx-lg-1"
-
-  >
-    <a
-      class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
-      routerLink="/login"
-    >
-      Login
-    </a>
-  </li>
-</ul>
+    <ul class="navbar-nav ml-auto" *ngIf="!authService.isAuthenticated()">
+        <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" routerLink="/login">
+                Login
+            </a>
+        </li>
+    </ul>
 
 </nav>
-<!-- <div class="container">
-    *ngIf="!isLogged"
-    <router-outlet></router-outlet>
-</div> -->
+
 <router-outlet></router-outlet>

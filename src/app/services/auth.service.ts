@@ -43,7 +43,7 @@ export class AuthService {
 
   isAuthenticated(): boolean {
     //return !this.jwtHelper.isTokenExpired(this.getUser().token);
-    return false;
+    return true;
   }
 
   saveUser(user){

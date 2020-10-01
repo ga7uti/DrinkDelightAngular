@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './component/home/home.component';
@@ -17,43 +17,45 @@ import { RawmaterialSupplierComponent } from './component/admin/rawmaterials/raw
 import { RawmaterialOrderComponent } from './component/admin/rawmaterials/rawmaterial-order/rawmaterial-order.component';
 import { AddRawmaterialStockComponent } from './component/admin/rawmaterials/add-rawmaterial-stock/add-rawmaterial-stock.component';
 import { AddProductStockComponent } from './component/admin/products/add-product-stock/add-product-stock.component';
-import {LoginComponent} from './component/auth/login/login.component';
-import {RegisterComponent} from './component/auth/register/register.component';
-import {UserComponent} from './component/user/user.component';
-import {AdminComponent} from './component/admin/admin.component';
-import {UpdatePasswordComponent} from './component/auth/update-password/update-password.component';
-import {ForgotPasswordComponent} from './component/auth/forgot-password/forgot-password.component';
-import {AuthGuard} from './helpers/auth.guard';
+import { LoginComponent } from './component/auth/login/login.component';
+import { RegisterComponent } from './component/auth/register/register.component';
+import { UserComponent } from './component/user/user.component';
+import { AdminComponent } from './component/admin/admin.component';
+import { UpdatePasswordComponent } from './component/auth/update-password/update-password.component';
+import { ForgotPasswordComponent } from './component/auth/forgot-password/forgot-password.component';
+import { AuthGuard } from './helpers/auth.guard';
 import { Role } from './models/role.enum';
+import { ProductsComponent } from './component/user/products/products.component';
+import { OrdersComponent } from './component/user/orders/orders.component';
 
 
 
-const routes: Routes =[
-  {path:'home',component:HomeComponent},
-      {path:'app',component:AppComponent},
-      //{path: '', pathMatch:'full',redirectTo:"/login"},
-      {path: 'register', component: RegisterComponent},
-      {path: 'login', component: LoginComponent},
-      {path: 'user', component: UserComponent, canActivate: [AuthGuard],data: { roles: [Role.User]}},
-      {path: 'admin', component: AdminComponent, canActivate: [AuthGuard],data: { roles: [Role.Admin]}},
-      {path: 'forgot-password', component: ForgotPasswordComponent},
-      {path: 'update-password', component: UpdatePasswordComponent},
-      {path:'rawmaterial-order',component:RawmaterialOrderComponent,canActivate: [AuthGuard],data: { roles: [Role.User]}} ,
-      {path:'rawmaterial-update',component:RawmaterialUpdateComponent, canActivate: [AuthGuard],data: { roles: [Role.Admin]}} ,
-      {path:'rawmaterial-display',component:RawmaterialDisplayComponent, canActivate: [AuthGuard],data: { roles: [Role.Admin]}} ,
-      {path:'rawmaterial-track',component:RawmaterialTrackComponent,canActivate: [AuthGuard],data: { roles: [Role.User]}} ,
-      {path:'rawmaterial-addStock',component:AddRawmaterialStockComponent, canActivate: [AuthGuard],data: { roles: [Role.Admin]}} ,
-      {path:'rawmaterial-updateStock',component:RawmaterialStockupdateComponent, canActivate: [AuthGuard],data: { roles: [Role.Admin]}} ,
-      {path:'product-order',component:PlaceAnOrderComponent, canActivate: [AuthGuard],data: { roles: [Role.User]}} ,
-      {path:'product-update',component:UpdateAnOrderComponent, canActivate: [AuthGuard],data: { roles: [Role.Admin]}} ,
-      {path:'product-display',component:DisplayOrderComponent, canActivate: [AuthGuard],data: { roles: [Role.User]}} ,
-      {path:'product-track',component:TrackProductOrderComponent,canActivate: [AuthGuard],data: { roles: [Role.User]}} ,
-      {path:'supplier-display',component:RawmaterialSupplierComponent, canActivate: [AuthGuard],data: { roles: [Role.User,Role.Admin]}} ,
-      {path:'distributor-display',component:DisplayDistributorComponent, canActivate: [AuthGuard],data: { roles: [Role.User,]}} ,
-      {path:'product-addStock',component:AddProductStockComponent, canActivate: [AuthGuard],data: { roles: [Role.Admin]}} ,
-      {path:'product-updateStock',component:UpdateProductComponent, canActivate: [AuthGuard],data: { roles: [Role.Admin]}} ,
-      {path:'',redirectTo:'home',pathMatch:'full'},
-      {path:'**',component:PageNotFoundComponent},
+const routes: Routes = [
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'forgot-password', component: ForgotPasswordComponent },
+  { path: 'update-password', component: UpdatePasswordComponent },
+  { path: 'user', component: UserComponent, canActivate: [AuthGuard], data: { roles: [Role.User] } },
+  { path: 'products', component: ProductsComponent, canActivate: [AuthGuard], data: { roles: [Role.User] } },
+  { path: 'orders', component: OrdersComponent, canActivate: [AuthGuard], data: { roles: [Role.User] } },
+  { path: 'rawmaterial-order', component: RawmaterialOrderComponent, canActivate: [AuthGuard], data: { roles: [Role.User] } },
+  { path: 'rawmaterial-track', component: RawmaterialTrackComponent, canActivate: [AuthGuard], data: { roles: [Role.User] } },
+  { path: 'product-display', component: DisplayOrderComponent, canActivate: [AuthGuard], data: { roles: [Role.User] } },
+  { path: 'product-order', component: PlaceAnOrderComponent, canActivate: [AuthGuard], data: { roles: [Role.User] } },
+  { path: 'product-track', component: TrackProductOrderComponent, canActivate: [AuthGuard], data: { roles: [Role.User] } },
+  { path: 'distributor-display', component: DisplayDistributorComponent, canActivate: [AuthGuard], data: { roles: [Role.User,] } },
+  { path: 'supplier-display', component: RawmaterialSupplierComponent, canActivate: [AuthGuard], data: { roles: [Role.User, Role.Admin] } },
+  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
+  { path: 'rawmaterial-update', component: RawmaterialUpdateComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
+  { path: 'rawmaterial-display', component: RawmaterialDisplayComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
+  { path: 'rawmaterial-addStock', component: AddRawmaterialStockComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
+  { path: 'rawmaterial-updateStock', component: RawmaterialStockupdateComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
+  { path: 'product-update', component: UpdateAnOrderComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
+  { path: 'product-addStock', component: AddProductStockComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
+  { path: 'product-updateStock', component: UpdateProductComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({
