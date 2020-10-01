@@ -34,6 +34,8 @@ import {AuthGuard} from './helpers/auth.guard';
 import { Role } from './models/role.enum';
 import { ProductsComponent } from './component/user/products/products.component';
 import { OrdersComponent } from './component/user/orders/orders.component';
+import { DetailedOrdersComponent } from './component/user/detailed-orders/detailed-orders.component';
+import { PlaceOrdersComponent } from './component/user/place-orders/place-orders.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +62,9 @@ import { OrdersComponent } from './component/user/orders/orders.component';
     UpdatePasswordComponent,
     ForgotPasswordComponent,
     ProductsComponent,
-    OrdersComponent
+    OrdersComponent,
+    DetailedOrdersComponent,
+    PlaceOrdersComponent
   ],
   imports: [
     BrowserModule,

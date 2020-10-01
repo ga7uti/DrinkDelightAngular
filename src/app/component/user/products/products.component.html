@@ -1,1 +1,60 @@
-<p>products works!</p>
+<!-- <p> products works</p> -->
+
+<section class="page-section portfolio" id="portfolio">
+    <div class="container">
+        <div style="margin-top: 5px" *ngIf="response.status" class="alert alert-danger">
+            {{response.message}}
+        </div>
+        <div class="center-pagination ">
+            <div class="loading">
+                <div class="loader"></div>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 2rem;">
+            <div class="column col-md-4" style="margin-bottom: 2rem">
+                <div class="card">
+                    <h5>Real Mango</h5>
+                    <div>Price - 75 </div>
+                    <div>Quantity -20 Bottles</div>
+                    <div>Description - Mango real </div>
+                    <br>
+                    <div class="d-flex align-items-center justify-content-center">
+                        <button style="margin-right: 1rem" class="btn btn-dark w-50" 
+                        (click)="placeOrder()">
+                          Order
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="column col-md-4" style="margin-bottom: 2rem">
+                <div class="card">
+                    <h5>Product name</h5>
+                    <div>Price</div>
+                    <div>Quantity</div>
+                    <div>Description</div>
+                    <br>
+                    <div class="d-flex align-items-center justify-content-center">
+                        <button style="margin-right: 1rem" class="btn btn-dark w-50">
+                            Order
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="column col-md-4" style="margin-bottom: 2rem">
+                <div class="card">
+                    <h5>Product name</h5>
+                    <div>Price</div>
+                    <div>Quantity</div>
+                    <div>Description</div>
+                    <br>
+                    <div class="d-flex align-items-center justify-content-center">
+                        <button style="margin-right: 1rem" class="btn btn-dark w-50">
+                            Order
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

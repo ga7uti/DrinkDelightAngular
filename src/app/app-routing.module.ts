@@ -27,6 +27,7 @@ import { AuthGuard } from './helpers/auth.guard';
 import { Role } from './models/role.enum';
 import { ProductsComponent } from './component/user/products/products.component';
 import { OrdersComponent } from './component/user/orders/orders.component';
+import { PlaceOrdersComponent } from './component/user/place-orders/place-orders.component';
 
 
 
@@ -40,6 +41,7 @@ const routes: Routes = [
   { path: 'user', component: UserComponent, canActivate: [AuthGuard], data: { roles: [Role.User] } },
   { path: 'products', component: ProductsComponent, canActivate: [AuthGuard], data: { roles: [Role.User] } },
   { path: 'orders', component: OrdersComponent, canActivate: [AuthGuard], data: { roles: [Role.User] } },
+  { path: 'placeorder', component: PlaceOrdersComponent, canActivate: [AuthGuard], data: { roles: [Role.User] } },
   { path: 'rawmaterial-order', component: RawmaterialOrderComponent, canActivate: [AuthGuard], data: { roles: [Role.User] } },
   { path: 'rawmaterial-track', component: RawmaterialTrackComponent, canActivate: [AuthGuard], data: { roles: [Role.User] } },
   { path: 'product-display', component: DisplayOrderComponent, canActivate: [AuthGuard], data: { roles: [Role.User] } },

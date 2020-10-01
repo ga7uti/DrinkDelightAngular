@@ -1,0 +1,95 @@
+<body>
+    <div id="order">
+        <div class="container">
+            <br>
+            <h1 >Product order</h1>
+            <br>
+            <div class="row">
+              <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+                <form (ngSubmit)="onSubmit()" #f="ngForm">
+                  <table class="table">
+                    <tr>
+                      <td>
+                        <label for="raw-names">Product Name</label>
+                      </td>
+                      <td>
+                        <select id="names" class="form-control" [(ngModel)]="name" name="name" #pdname="ngModel">
+                          <option *ngFor="let name of names" [value]="name">{{name}}</option>
+                        </select>
+                        <span style="color:red;" class="help-block" *ngIf="!pdname.valid &&
+                          pdname.touched">Please enter a valid Name!</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <label for="distributors-id">distributors ID</label>
+                      </td>
+                      <td>
+                        <select id="distributor-id" class="form-control" [(ngModel)]="distributor" name="sid" #did="ngModel">
+                          <option *ngFor="let distributor of distributors" [ngValue]="distributor">{{distributor.distributorId}}</option>
+                        </select>
+                        <span style="color:red;" class="help-block" *ngIf="!did.valid && did.touched">Please
+                          enter a valid ID!</span>
+                      </td>
+                    </tr>
+          
+                    <tr>
+                      <td>
+                        <label for="warehouse-id">Warehouse Id</label>
+                      </td>
+                      <td>
+                        <select id="warehouse-id" class="form-control" [(ngModel)]="warehouse" name="wid" #wid="ngModel">
+                          <option *ngFor="let warehouse of warehouses" [ngValue]="warehouse">
+                            {{warehouse.warehouseId}}
+                          </option>
+                        </select>
+                        <span style="color:red;" class="help-block" *ngIf="!wid.valid && wid.touched">Please
+                          enter a valid ID !</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <label for="quantity-unit">Quantity Unit</label>
+                      </td>
+                      <td>
+                        <input type="number" id="unit" class="form-control"  name="quantity-unit" [(ngModel)]="quantityUnit" #unit="ngModel"
+                          required>
+                        <span style="color:red;" class="help-block" *ngIf="!unit.valid && unit.touched">Please
+                          enter a valid Unit !</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <label for="price-per-unit">Price per unit</label>
+                      </td>
+                      <td>
+          
+                        <input type="number" id="price-per-unit" class="form-control" name="price-per-unit" [(ngModel)]="pricePerUnit"
+                          #price="ngModel" required>
+                        <span style="color:red;" class="help-block" *ngIf="!price.valid && price.touched">Please
+                          enter a valid Price !</span>
+          
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><label for="date">Expected date of Delivery</label></td>
+                      <td>
+                        <input type="date" id="date" class="form-control" name="date" [(ngModel)]="dateOfDelivery" #date="ngModel" required>
+                        <span style="color:red;" class="help-block" *ngIf="!date.valid && date.touched">Please
+                          enter a valid date !</span>
+                      </td>
+                    </tr>
+                  </table>
+                  <button class="btn btn-primary" type="submit">Order</button>
+                </form>
+              </div>
+            </div>
+            <hr>
+            <div class="row" *ngIf="submitted">
+              <div class="col-xs-12">
+                <h3>order successful ! Your order id is : {{orderId}}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </body>
