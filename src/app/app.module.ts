@@ -4,8 +4,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { AppRoutingModule, } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './component/home/home.component';
-import { RouterModule } from '@angular/router'
-import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
 import { PlaceAnOrderComponent } from './component/admin/products/place-an-order/place-an-order.component';
 import { UpdateAnOrderComponent } from './component/admin/products/products-update-order/update-an-order.component';
 import { DisplayOrderComponent } from './component/admin/products/products-display-order/display-order.component';
@@ -19,7 +17,7 @@ import { RawmaterialStockupdateComponent } from './component/admin/rawmaterials/
 import { RawmaterialSupplierComponent } from './component/admin/rawmaterials/rawmaterial-supplier/rawmaterial-supplier.component';
 import { RawmaterialOrderComponent } from './component/admin/rawmaterials/rawmaterial-order/rawmaterial-order.component';
 import { RawmaterialService } from './services/rawmaterial.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NetinfraService } from './services/netinfra.service';
 import { AddRawmaterialStockComponent } from './component/admin/rawmaterials/add-rawmaterial-stock/add-rawmaterial-stock.component';
 import { AddProductStockComponent } from './component/admin/products/add-product-stock/add-product-stock.component';
@@ -31,11 +29,11 @@ import { AdminComponent } from './component/admin/admin.component';
 import { UpdatePasswordComponent } from './component/auth/update-password/update-password.component';
 import { ForgotPasswordComponent } from './component/auth/forgot-password/forgot-password.component';
 import { AuthGuard } from './helpers/auth.guard';
-import { Role } from './models/role.enum';
 import { ProductsComponent } from './component/user/products/products.component';
 import { OrdersComponent } from './component/user/orders/orders.component';
 import { DetailedOrdersComponent } from './component/user/detailed-orders/detailed-orders.component';
 import { PlaceOrdersComponent } from './component/user/place-orders/place-orders.component';
+import { AuthInterceptor } from './helpers/auth-interceptor';
 
 @NgModule({
   declarations: [
@@ -73,7 +71,9 @@ import { PlaceOrdersComponent } from './component/user/place-orders/place-orders
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [RawmaterialService, NetinfraService, ProductService, AuthGuard],
+  providers: [RawmaterialService, NetinfraService, ProductService, AuthGuard,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
