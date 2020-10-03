@@ -21,26 +21,25 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.registerForm = new FormGroup({
-      fullName: new FormControl('', Validators.required),
-      userName: new FormControl('', Validators.required),
+      name: new FormControl('',[Validators.required, Validators.minLength(4)]),
+      userName: new FormControl('',[Validators.required, Validators.minLength(4)]),
       email: new FormControl('', [Validators.email, Validators.required]),
       passwordGroup: new FormGroup({
         password: new FormControl('', [Validators.required, Validators.minLength(8)]),
         re_password: new FormControl('', [Validators.required, Validators.minLength(8)])
       }),
-      userPhone: new FormControl('', Validators.required)
+      phone: new FormControl('')
     });
   }
 
   submit() {
     const formData = this.registerForm.value;
     if (!formData.passwordGroup.password.localeCompare(formData.passwordGroup.re_password)) {
-      const user = new User(formData);
-
+      const user = new User(formData); 
+      console.log(JSON.stringify(user))    
       this.authService.register(user).subscribe(value => {
         if (value.status) {
           this.router.navigate(['/']);
-          console.log(value.message);
         } else {
           this.response = {status: true, message: value.message};
         }

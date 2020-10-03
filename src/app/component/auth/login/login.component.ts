@@ -1,10 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-import {LoginRequest} from '../../../models/login-request';
-import {AuthService} from '../../../services/auth.service';
-import {Router} from '@angular/router';
-import {ErrorResponse} from '../../../models/error-response';
-import {User} from '../../../models/user';
-import {Role} from '../../../models/role.enum';
+import { Component, OnInit } from '@angular/core';
+import { LoginRequest } from '../../../models/login-request';
+import { AuthService } from '../../../services/auth.service';
+import { Router } from '@angular/router';
+import { ErrorResponse } from '../../../models/error-response';
+import { User } from '../../../models/user';
+import { Role } from '../../../models/role.enum';
 
 @Component({
   selector: 'app-login',
@@ -24,24 +24,25 @@ export class LoginComponent implements OnInit {
   }
 
   submit() {
+    console.log(JSON.stringify(this.loginRequest))
     this.authService.login(this.loginRequest).subscribe(value => {
       if (value.status) {
         const user = new User(value.data);
         this.authService.saveUser(user);
-        this.authService.isLoggedIn=true;
         this.redirectTo(user);
       } else {
-        this.response = {status: true, message: value.message};
+        this.response = { status: true, message: value.message };
       }
     });
-    console.log(this.authService.isLoggedIn);
   }
 
   redirectTo(user) {
-    if (user.roles[0] === Role.User) {
-      this.router.navigate(['home']);
-    } else if (user.roles[0] === Role.Admin) {
-      this.router.navigate(['home']);
+    if (localStorage.getItem("currentUser") !== null) {
+      if (user.roles[0] === Role.User) {
+        this.router.navigate(['home']);
+      } else if (user.roles[0] === Role.Admin) {
+        this.router.navigate(['home']);
+      }
     }
   }
 }
