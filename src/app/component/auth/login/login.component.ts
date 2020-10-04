@@ -35,6 +35,10 @@ export class LoginComponent implements OnInit {
       } else {
         this.response = { status: true, message: value.message };
       }
+    },
+    error =>{
+      this.loading =false;
+      this.response = { status: true, message:"Unauthenticated: Username or password doesnot match" };
     });
   }
 
