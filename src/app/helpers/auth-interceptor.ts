@@ -11,7 +11,7 @@ export class AuthInterceptor implements HttpInterceptor {
     }
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-        if (this.authService.isAuthenticated) {
+        if (this.authService.isAuthenticated()) {
             const authReq = req.clone({
                 headers: req.headers.set('Content-Type', 'application/json')
                     .set('Authorization', 'Bearer ' + this.authService.getToken)

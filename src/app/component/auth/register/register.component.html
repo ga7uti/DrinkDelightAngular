@@ -6,95 +6,107 @@
       {{response.message}}
     </div>
 
-    <div class="form-group">
-      <input type="text" class="form-control" id="name" placeholder="Enter your full name" name="name"
-        formControlName="name">
-      <div style="margin-top: 5px" *ngIf="registerForm.get('name').invalid
+    <div class="center-pagination ">
+      <div *ngIf="loading" class="loading">
+        <div class="loader"></div>
+      </div>
+    </div>
+
+    <div style="margin-top: 5px" *ngIf="response.status" class="alert alert-danger">
+      {{response.message}}
+    </div>
+
+    <div *ngIf="!loading">
+      <div class="form-group">
+        <input type="text" class="form-control" id="name" placeholder="Enter your full name" name="name"
+          formControlName="name">
+        <div style="margin-top: 5px" *ngIf="registerForm.get('name').invalid
             && (registerForm.get('name').dirty || registerForm.get('name').touched)" class="alert alert-danger">
-        <div *ngIf="registerForm.get('name').errors.required">
-          Name is required
-        </div>
-        <div *ngIf="registerForm.get('name').errors.minlength">
-          Name should be 4 characters long
+          <div *ngIf="registerForm.get('name').errors.required">
+            Name is required
+          </div>
+          <div *ngIf="registerForm.get('name').errors.minlength">
+            Name should be 4 characters long
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="form-group">
-      <input type="text" class="form-control" id="username" placeholder="Enter your user name" name="username"
-        formControlName="userName">
-      <div style="margin-top: 5px" *ngIf="registerForm.get('userName').invalid
+      <div class="form-group">
+        <input type="text" class="form-control" id="username" placeholder="Enter your user name" name="username"
+          formControlName="userName">
+        <div style="margin-top: 5px" *ngIf="registerForm.get('userName').invalid
             && (registerForm.get('userName').dirty || registerForm.get('userName').touched)"
-        class="alert alert-danger">
-        <div *ngIf="registerForm.get('userName').errors.required">
-          Username is required
-        </div>
+          class="alert alert-danger">
+          <div *ngIf="registerForm.get('userName').errors.required">
+            Username is required
+          </div>
 
-        <div *ngIf="registerForm.get('userName').errors.minlength">
-          Username should be 4 characters long
+          <div *ngIf="registerForm.get('userName').errors.minlength">
+            Username should be 4 characters long
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="form-group">
-      <input type="email" class="form-control" id="email" placeholder="Enter your email" name="email"
-        formControlName="email">
-      <div style="margin-top: 5px" *ngIf="registerForm.get('email').invalid
+      <div class="form-group">
+        <input type="email" class="form-control" id="email" placeholder="Enter your email" name="email"
+          formControlName="email">
+        <div style="margin-top: 5px" *ngIf="registerForm.get('email').invalid
             && (registerForm.get('email').dirty || registerForm.get('email').touched)" class="alert alert-danger">
-        <div *ngIf="registerForm.get('email').errors.required">
-          Email is required.
-        </div>
-        <div *ngIf="registerForm.get('email').errors.email">
-          Invalid email.
+          <div *ngIf="registerForm.get('email').errors.required">
+            Email is required.
+          </div>
+          <div *ngIf="registerForm.get('email').errors.email">
+            Invalid email.
+          </div>
         </div>
       </div>
-    </div>
 
-    <div formGroupName="passwordGroup">
-      <div class="form-group">
-        <input type="password" class="form-control" placeholder="Enter your password" id="password" name="password"
-          formControlName="password">
+      <div formGroupName="passwordGroup">
+        <div class="form-group">
+          <input type="password" class="form-control" placeholder="Enter your password" id="password" name="password"
+            formControlName="password">
 
-        <div style="margin-top: 5px"
-          *ngIf="registerForm.get('passwordGroup').get('password').invalid
+          <div style="margin-top: 5px"
+            *ngIf="registerForm.get('passwordGroup').get('password').invalid
             && (registerForm.get('passwordGroup').get('password').dirty || registerForm.get('passwordGroup').get('password').touched)"
-          class="alert alert-danger">
-          <div *ngIf="registerForm.get('passwordGroup').get('password').errors.required">
-            Password is required
-          </div>
+            class="alert alert-danger">
+            <div *ngIf="registerForm.get('passwordGroup').get('password').errors.required">
+              Password is required
+            </div>
 
-          <div *ngIf="registerForm.get('passwordGroup').get('password').errors.minlength">
-            Password should be 8 characters long.
+            <div *ngIf="registerForm.get('passwordGroup').get('password').errors.minlength">
+              Password should be 8 characters long.
+            </div>
           </div>
         </div>
-      </div>
-      <div class="form-group">
-        <input type="password" class="form-control" placeholder="Enter your password again" id="re-password"
-          name="re-password" formControlName="re_password">
-        <div style="margin-top: 5px"
-          *ngIf="registerForm.get('passwordGroup').get('re_password').invalid
+        <div class="form-group">
+          <input type="password" class="form-control" placeholder="Enter your password again" id="re-password"
+            name="re-password" formControlName="re_password">
+          <div style="margin-top: 5px"
+            *ngIf="registerForm.get('passwordGroup').get('re_password').invalid
             && (registerForm.get('passwordGroup').get('re_password').dirty || registerForm.get('passwordGroup').get('re_password').touched)"
-          class="alert alert-danger">
-          <div *ngIf="registerForm.get('passwordGroup').get('re_password').errors.required">
-            Password is required
-          </div>
+            class="alert alert-danger">
+            <div *ngIf="registerForm.get('passwordGroup').get('re_password').errors.required">
+              Password is required
+            </div>
 
-          <div *ngIf="registerForm.get('passwordGroup').get('re_password').errors.minlength">
-            Password should be 8 characters long.
+            <div *ngIf="registerForm.get('passwordGroup').get('re_password').errors.minlength">
+              Password should be 8 characters long.
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="form-group">
-      <input type="tel" class="form-control" id="phone_number" placeholder="Enter your phone number "
-        name="phone_number" formControlName="phone">
-    </div>
+      <div class="form-group">
+        <input type="tel" class="form-control" id="phone_number" placeholder="Enter your phone number "
+          name="phone_number" formControlName="phone">
+      </div>
 
-    <div class="text-center">
-      <button type="submit" class="btn  btn-primary" [disabled]="!registerForm.valid">
-        Register
-      </button>
+      <div class="text-center">
+        <button type="submit" class="btn  btn-primary" [disabled]="!registerForm.valid">
+          Register
+        </button>
+      </div>
     </div>
   </form>
 </div>

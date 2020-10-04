@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../../services/auth.service';
 import {ErrorResponse} from '../../../models/error-response';
+import { FormsModule }   from '@angular/forms';
+
 
 @Component({
   selector: 'app-forgot-password',
@@ -11,6 +13,8 @@ export class ForgotPasswordComponent implements OnInit {
 
   email: string;
   response: ErrorResponse = new ErrorResponse();
+  isSuccess = false;
+  loading: boolean =false;
 
 
   constructor(private authService: AuthService) {
@@ -20,10 +24,14 @@ export class ForgotPasswordComponent implements OnInit {
   }
 
   submit() {
+    this.loading = true;
     this.authService.forgetPassword(this.email).subscribe(value => {
+      this.loading = false;
       if (value.status) {
-        console.log(value.message);
+        this.isSuccess = true;
+        this.response = {status: true, message: value.message};
       } else {
+        this.isSuccess = false;
         this.response = {status: true, message: value.message};
       }
     });

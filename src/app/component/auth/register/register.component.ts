@@ -14,6 +14,8 @@ export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup;
   response: ErrorResponse = new ErrorResponse();
+  loading: boolean = false;
+
 
 
   constructor(private authService: AuthService, private router: Router) {
@@ -33,20 +35,22 @@ export class RegisterComponent implements OnInit {
   }
 
   submit() {
+    this.loading = true;
     const formData = this.registerForm.value;
     if (!formData.passwordGroup.password.localeCompare(formData.passwordGroup.re_password)) {
-      const user = new User(formData); 
-      console.log(JSON.stringify(user))    
+      const user = new User(formData);
       this.authService.register(user).subscribe(value => {
+        this.loading = false;
         if (value.status) {
           this.router.navigate(['/']);
+          console.log(value.message);
         } else {
           this.response = {status: true, message: value.message};
         }
       });
     }else {
+      this.loading = false;
       this.response = {status: true, message: 'Password does not match.'};
-
     }
   }
 }

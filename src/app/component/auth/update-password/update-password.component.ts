@@ -13,7 +13,7 @@ export class UpdatePasswordComponent implements OnInit {
   password: string;
   re_password: string;
   response: ErrorResponse = new ErrorResponse();
-
+  loading: boolean = false;
   constructor(private authService: AuthService, private router: Router) {
   }
 
@@ -21,11 +21,13 @@ export class UpdatePasswordComponent implements OnInit {
   }
 
   submit() {
+    this.loading = true;
     const url_str = window.location.href;
     const url = new URL(url_str);
     const token = url.searchParams.get('token');
     if (!this.password.localeCompare(this.re_password)) {
       this.authService.updatePassword(token, this.password).subscribe(value => {
+        this.loading = false;
         if (value.status) {
           console.log(value.message);
           this.router.navigate(['/']);
@@ -34,6 +36,7 @@ export class UpdatePasswordComponent implements OnInit {
         }
       });
     } else {
+      this.loading = false;
       this.response = {status: true, message: 'Password does not match'};
     }
 

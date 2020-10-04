@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
 
   loginRequest: LoginRequest = new LoginRequest();
   response: ErrorResponse = new ErrorResponse();
+  loading: boolean = false;
 
   constructor(private authService: AuthService, private router: Router) {
   }
@@ -24,8 +25,9 @@ export class LoginComponent implements OnInit {
   }
 
   submit() {
-    console.log(JSON.stringify(this.loginRequest))
+    this.loading = true;
     this.authService.login(this.loginRequest).subscribe(value => {
+      this.loading =false;
       if (value.status) {
         const user = new User(value.data);
         this.authService.saveUser(user);

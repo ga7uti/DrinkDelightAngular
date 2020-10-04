@@ -22,7 +22,7 @@ export class AuthGuard implements CanActivate {
       // check if route is restricted by role
       if (next.data.roles && next.data.roles.indexOf(currentUser.roles[0]) === -1) {
         // role not authorised so redirect to home page
-        this.router.navigate(['/']);
+        this.router.navigate(['/home']);
         return false;
       }
       return true;
