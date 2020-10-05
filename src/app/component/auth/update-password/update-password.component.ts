@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../../services/auth.service';
 import {Router} from '@angular/router';
 import {ErrorResponse} from '../../../models/error-response';
+import { ToasterService } from 'src/app/services/toaster.service';
 
 @Component({
   selector: 'app-update-password',
@@ -12,9 +13,8 @@ export class UpdatePasswordComponent implements OnInit {
 
   password: string;
   re_password: string;
-  response: ErrorResponse = new ErrorResponse();
   loading: boolean = false;
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private authService: AuthService, private router: Router,private toastr:ToasterService) {
   }
 
   ngOnInit(): void {
@@ -29,15 +29,15 @@ export class UpdatePasswordComponent implements OnInit {
       this.authService.updatePassword(token, this.password).subscribe(value => {
         this.loading = false;
         if (value.status) {
-          console.log(value.message);
           this.router.navigate(['/']);
+          this.toastr.success("Password updated successfully.");
         } else {
-          this.response = {status: true, message: value.message};
+          this.toastr.error(value.message);
         }
       });
     } else {
       this.loading = false;
-      this.response = {status: true, message: 'Password does not match'};
+      this.toastr.error('Password does not match');
     }
 
   }

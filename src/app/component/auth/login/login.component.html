@@ -1,10 +1,5 @@
 <div class="d-flex vw-100 vh-100 align-items-center justify-content-center">
   <form class="rounded p-5" style="width: 500px" (ngSubmit)="submit()">
-    <div style="margin-top: 5px" *ngIf="response.status"
-         class="alert alert-danger">
-      {{response.message}}
-    </div>
-
     <div class="center-pagination ">
       <div *ngIf="loading" class="loading">
         <div class="loader"></div>

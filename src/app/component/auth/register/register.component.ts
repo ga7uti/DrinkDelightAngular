@@ -3,7 +3,7 @@ import {User} from '../../../models/user';
 import {AuthService} from '../../../services/auth.service';
 import {Router} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {ErrorResponse} from '../../../models/error-response';
+import { ToasterService } from 'src/app/services/toaster.service';
 
 @Component({
   selector: 'app-register',
@@ -13,12 +13,11 @@ import {ErrorResponse} from '../../../models/error-response';
 export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup;
-  response: ErrorResponse = new ErrorResponse();
   loading: boolean = false;
 
 
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private authService: AuthService, private router: Router,private toastr:ToasterService) {
   }
 
   ngOnInit(): void {
@@ -43,14 +42,14 @@ export class RegisterComponent implements OnInit {
         this.loading = false;
         if (value.status) {
           this.router.navigate(['/']);
-          console.log(value.message);
+          this.toastr.success(value.message)
         } else {
-          this.response = {status: true, message: value.message};
+          this.toastr.error(value.message)
         }
       });
     }else {
       this.loading = false;
-      this.response = {status: true, message: 'Password does not match.'};
+      this.toastr.success('Password does not match.');
     }
   }
 }

@@ -34,6 +34,8 @@ import { OrdersComponent } from './component/user/orders/orders.component';
 import { DetailedOrdersComponent } from './component/user/detailed-orders/detailed-orders.component';
 import { PlaceOrdersComponent } from './component/user/place-orders/place-orders.component';
 import { AuthInterceptor } from './helpers/auth-interceptor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -69,7 +71,9 @@ import { AuthInterceptor } from './helpers/auth-interceptor';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [RawmaterialService, NetinfraService, ProductService, AuthGuard,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }

@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {AuthService} from '../../../services/auth.service';
-import {ErrorResponse} from '../../../models/error-response';
-import { FormsModule }   from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../../services/auth.service';
+import { ErrorResponse } from '../../../models/error-response';
+import { FormsModule } from '@angular/forms';
+import { ToasterService } from 'src/app/services/toaster.service';
 
 
 @Component({
@@ -12,12 +13,10 @@ import { FormsModule }   from '@angular/forms';
 export class ForgotPasswordComponent implements OnInit {
 
   email: string;
-  response: ErrorResponse = new ErrorResponse();
-  isSuccess = false;
-  loading: boolean =false;
+  loading: boolean = false;
 
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private toastr: ToasterService) {
   }
 
   ngOnInit(): void {
@@ -28,11 +27,9 @@ export class ForgotPasswordComponent implements OnInit {
     this.authService.forgetPassword(this.email).subscribe(value => {
       this.loading = false;
       if (value.status) {
-        this.isSuccess = true;
-        this.response = {status: true, message: value.message};
+        this.toastr.success(value.message);
       } else {
-        this.isSuccess = false;
-        this.response = {status: true, message: value.message};
+        this.toastr.error(value.message);
       }
     });
   }

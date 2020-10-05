@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ErrorResponse } from '../../../models/error-response';
 import { User } from '../../../models/user';
 import { Role } from '../../../models/role.enum';
+import { ToasterService } from 'src/app/services/toaster.service';
 
 @Component({
   selector: 'app-login',
@@ -14,10 +15,9 @@ import { Role } from '../../../models/role.enum';
 export class LoginComponent implements OnInit {
 
   loginRequest: LoginRequest = new LoginRequest();
-  response: ErrorResponse = new ErrorResponse();
   loading: boolean = false;
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private authService: AuthService, private router: Router, private toastr: ToasterService) {
   }
 
   ngOnInit(): void {
@@ -27,19 +27,21 @@ export class LoginComponent implements OnInit {
   submit() {
     this.loading = true;
     this.authService.login(this.loginRequest).subscribe(value => {
-      this.loading =false;
+      this.loading = false;
       if (value.status) {
         const user = new User(value.data);
         this.authService.saveUser(user);
         this.redirectTo(user);
+        this.toastr.success('You are logged in sucessfully');
       } else {
-        this.response = { status: true, message: value.message };
+        this.toastr.error(`${value.message}`);
+
       }
     },
-    error =>{
-      this.loading =false;
-      this.response = { status: true, message:"Unauthenticated: Username or password doesnot match" };
-    });
+      () => {
+        this.loading = false;
+        this.toastr.error(`Unauthenticated: Username or password doesnot match`);
+      });
   }
 
   redirectTo(user) {
